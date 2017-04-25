@@ -28,4 +28,8 @@ get("/flexible_payment/:apr/:years/:principal",
 {:controller=>"calculations",
 :action=>"flexible_payment"})
 
+get("/flexible_random/:low/:high",
+{:controller=>"calculations",
+:action=>"random_number"})
+
 end
