@@ -16,4 +16,16 @@ get("/square/results",
 {:controller=>"calculations",
 :action=>"square"})
 
+get("/square_root/new",
+{:controller=>"calculations",
+:action=>"square_root_form"})
+
+get("/square_root/results",
+{:controller=>"calculations",
+:action=>"square_root"})
+
+get("/flexible_payment/:apr/:years/:principal",
+{:controller=>"calculations",
+:action=>"flexible_payment"})
+
 end

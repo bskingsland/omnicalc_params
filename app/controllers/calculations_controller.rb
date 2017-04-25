@@ -23,4 +23,22 @@ class CalculationsController < ApplicationController
     render("calculations/square.html.erb")
   end
 
+  def square_root_form
+    render("calculations/square_root_form.html.erb")
+  end
+
+  def square_root
+    @user_provided_number=params["user_input_square"].to_f
+    @square_root_number=Math.sqrt(@user_provided_number)
+    render("calculations/square_root.html.erb")
+  end
+
+  def flexible_payment
+    @principal=(params["principal"].to_f).round(0)
+    @apr=params["apr"].to_f)
+    @years=(params["years"].to_f).round(0)
+    @monthly_payment=(@principal*(@apr/1200)/(1-(1+@apr/1200)**(-1*@years*12))).round(2)
+    render("calculations/flexible_payment.html.erb")
+  end
+
 end
