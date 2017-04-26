@@ -42,11 +42,18 @@ class CalculationsController < ApplicationController
   end
 
   def payment
-    @user_provided_apr=params["user_input_apr"].to_f/100
+    @user_provided_apr=params["user_input_apr"].to_f
     @user_provided_years=params["user_input_years"].to_f
     @user_provided_principal=params["user_input_principal"].to_f
     @monthly_payment=((@user_provided_principal*(@user_provided_apr/1200))/(1-(1+@user_provided_apr/1200)**(-1*@user_provided_years*12))).round(2)
     render("calculations/payment.html.erb")
   end
 
+  def random
+    @min=params["min"].to_i
+    @max=params["max"].to_i
+    @random_number=rand(@min..@max)
+    render("calculations/random.html.erb")
   end
+
+end

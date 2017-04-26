@@ -64,4 +64,9 @@ get("/word_count/results",
 {:controller=>"calculations",
 :action=>"word_count"})
 
+get("/random/results",
+{:controller=>"calculations",
+:action=>"random_form"
+})
+
 end
