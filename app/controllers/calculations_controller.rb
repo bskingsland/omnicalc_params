@@ -34,11 +34,18 @@ class CalculationsController < ApplicationController
   end
 
   def flexible_payment
-    @basis_points=params["basis_points"].to_f
-    @apr=@basis_points/100
-    @years=params["years"].to_f
-    @principal=params["principal"].to_f
-    @monthly_payment=@principal*(@apr/1200)/(1-(1+@apr/1200)**(-1*@years*12))
+    @user_provided_apr=params["basis_points"].to_f/100
+    @user_provided_years=params["years"].to_f
+    @user_provided_principal=params["principal"].to_f
+    @monthly_payment=((@user_provided_principal*(@user_provided_apr/1200))/(1-(1+@user_provided_apr/1200)**(-1*@user_provided_years*12))).round(2)
+    render("calculations/payment.html.erb")
+  end
+
+  def payment
+    @user_provided_apr=params["user_input_apr"].to_f/100
+    @user_provided_years=params["user_input_years"].to_f
+    @user_provided_principal=params["user_input_principal"].to_f
+    @monthly_payment=((@user_provided_principal*(@user_provided_apr/1200))/(1-(1+@user_provided_apr/1200)**(-1*@user_provided_years*12))).round(2)
     render("calculations/payment.html.erb")
   end
 

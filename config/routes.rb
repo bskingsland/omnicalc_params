@@ -24,11 +24,11 @@ get("/square_root/results",
 {:controller=>"calculations",
 :action=>"square_root"})
 
-get("/flexible_payment/:basis_points/:years/:principal",
+get("/flexible/payment/:basis_points/:years/:principal",
 {:controller=>"calculations",
 :action=>"flexible_payment"})
 
-get("/flexible_random/:low/:high",
+get("/flexible/random/:low/:high",
 {:controller=>"calculations",
 :action=>"random_number"})
 
